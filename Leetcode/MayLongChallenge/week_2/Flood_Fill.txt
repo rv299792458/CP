@@ -1,0 +1,25 @@
+class Solution {
+    int image[][];
+    HashMap<String,Boolean>hm=new HashMap<>();
+        public int[][] floodFill(int[][] image1, int sr, int sc, int newColor) {
+        image=image1;
+        fun(sr, sc, newColor,image[sr][sc]);
+            return image;
+            
+    }
+    public void fun( int sr, int sc, int newColor,int initialColor)
+    {
+        if(hm.get(sr+" "+sc)==null)
+            hm.put(sr+" "+sc,true);
+        if(image[sr][sc]==initialColor)
+        image[sr][sc]=newColor;
+        if(sc+1<image[0].length&&(hm.get(sr+" "+(sc+1))==null)&&image[sr][sc+1]==initialColor)
+        fun(sr,sc+1,newColor,initialColor);
+        if(sc-1>=0&&(hm.get(sr+" "+(sc-1))==null)&&image[sr][sc-1]==initialColor)
+        fun(sr,sc-1,newColor,initialColor);
+        if(sr+1<image.length&&(hm.get((sr+1)+" "+sc)==null)&&image[sr+1][sc]==initialColor)
+        fun(sr+1,sc,newColor,initialColor);
+        if(sr-1>=0&&(hm.get((sr-1)+" "+sc)==null)&&image[sr-1][sc]==initialColor)
+        fun(sr-1,sc,newColor,initialColor);
+    }    
+}

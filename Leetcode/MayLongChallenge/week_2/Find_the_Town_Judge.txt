@@ -1,0 +1,40 @@
+class Solution {
+    public int findJudge(int N, int[][] trust) {
+        if(N==1)
+            return 1;
+        
+         ArrayList<Integer>al=new ArrayList<>();
+    HashMap<Integer,Integer>hm=new HashMap<>();
+    for(int i=1;i<=N;++i)
+    {
+      al.add(i);
+    }
+    for(int i=0;i<trust.length;++i)
+    {
+      Integer obj=new Integer(trust[i][0]);
+      al.remove(obj);
+      if(hm.get(trust[i][1])==null)
+        hm.put(trust[i][1],1);
+      else
+        hm.put(trust[i][1],hm.get(trust[i][1])+1);
+    }
+   // System.out.println(al.toString());
+     if(al.size()==0)
+     {
+       
+       return -1;
+     }
+     for(Integer i:al)
+     {
+         if(hm.get(i)==null)
+             continue;
+       if(hm.get(i)==(N-1))
+       {
+        
+         return i;
+       }
+     }
+   return -1;
+        
+    }
+}
