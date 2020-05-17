@@ -1,0 +1,37 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Random;
+
+
+public class Array_Sharpening {
+
+
+  public static void main(String[] args) throws NumberFormatException, IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    int t1=Integer.parseInt(br.readLine());
+    for(int t=0;t<t1;++t)
+    {
+      int n=Integer.parseInt(br.readLine());
+      String s[]=br.readLine().trim().split(" ");
+      long ans=1;
+      long mod=1234567;
+      for(String s1:s)
+      {
+        int k=Integer.parseInt(s1);
+        ans=(ans*k)%mod;
+      }
+      System.out.println(ans);
+    }
+    }
+  }
+
