@@ -1,0 +1,74 @@
+import java.io.BufferedReader;
+//import java.io.CharConversionException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import java.util.HashMap;
+
+
+
+public class Array_Sharpening {
+
+
+  public static void main(String[] args) throws NumberFormatException, IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+//    int t1=Integer.parseInt(br.readLine());
+//
+//    for(int t=0;t<t1;++t) {
+    String s =br.readLine();
+    Boolean ans=true;
+    HashMap<Character,Integer>hm=new HashMap<>();
+    HashMap<Integer,Integer>checker=new HashMap<>();
+    int n=s.length();
+    for(int i=0;i<n;++i)
+    {
+      char ch=s.charAt(i);
+      if(hm.get(ch)==null)
+        hm.put(ch,1);
+      else
+        hm.put(ch,hm.get(ch)+1);
+
+    }
+//    for (Character ch : hm.keySet()) {
+//      System.out.println(ch+" "+hm.get(ch));
+//    }
+    for(Integer k:hm.values())
+    {
+    // System.out.println(k);
+      if(checker.get(k)==null)
+        checker.put(k,1);
+      else
+        checker.put(k,checker.get(k)+1);
+
+      if(checker.size()>2)
+      {
+        System.out.println("NO");
+        return;
+      }
+    }
+    if(checker.size()==1||(checker.get(1)!=null&&checker.get(1)==1))
+    {
+      System.out.println("YES");
+      return;
+    }
+   int arr[]=new int[2];
+    int i=0;
+   for(Integer k:checker.keySet())
+   {
+     arr[i]=k;
+     ++i;
+   }
+   int max=Math.max(arr[0],arr[1]);
+   int min=Math.min(arr[0],arr[1]);
+    if (max - min == 1 && checker.get(max) == 1) {
+      System.out.println("YES");
+    } else {
+      System.out.println("NO");
+    }
+
+
+
+    }
+  }
+
